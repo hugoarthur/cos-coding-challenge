@@ -6,5 +6,9 @@ export interface IAuctionResponse {
 }
 
 export interface IAuction {
+    id: number;
+    label: string;
     numBids: number;
+    currentHighestBidValue: number;
+    minimumRequiredAsk: number;
 }

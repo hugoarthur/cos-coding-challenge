@@ -9,6 +9,6 @@ export interface ICarOnSaleClient {
 
     authenticate(userMailId:string, authReq: IAuthenticationRequest): Promise<IAuthenticationResult>;
 
-    getRunningAuctions(request: IHTTPRequest): Promise<IAuctionResponse>
+    getRunningAuctions(request?: IHTTPRequest): Promise<IAuctionResponse>
 
 }
