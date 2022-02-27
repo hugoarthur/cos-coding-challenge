@@ -1,20 +1,16 @@
 import { inject, injectable } from "inversify";
 import { ILogger } from "./services/Logger/interface/ILogger";
 import { DependencyIdentifier } from "./DependencyIdentifiers";
-import { CarOnSaleClient } from "./services/CarOnSaleClient/classes/CarOnSaleClient";
-import { AxiosHTTPClient } from "./utils/http/classes/AxiosHTTPClient";
 import { ICarOnSaleClient } from "./services/CarOnSaleClient/interface/ICarOnSaleClient";
 
-const BASE_COS_CLIENT_URL = process.env.BASE_COS_CLIENT_URL || '';
+// const BASE_COS_CLIENT_URL = process.env.BASE_COS_CLIENT_URL || '';
 
 @injectable()
 export class AuctionMonitorApp {
 
-    private client: ICarOnSaleClient;
-
     public constructor(
-        @inject(DependencyIdentifier.LOGGER) private logger: ILogger) {
-        this.client = new CarOnSaleClient(new AxiosHTTPClient({ baseURL: BASE_COS_CLIENT_URL }));
+        @inject(DependencyIdentifier.LOGGER) private logger: ILogger,
+        @inject(DependencyIdentifier.COS_API_CLIENT) private client: ICarOnSaleClient) {
     }
 
     public async start(): Promise<void> {

@@ -1,7 +1,8 @@
 import { expect } from "chai";
-import { CarOnSaleClient } from "./CarOnSaleClient";
 import nock from "nock";
-import { AxiosRequestConfig } from "axios";
+import "reflect-metadata";
+
+import { CarOnSaleClient } from "./CarOnSaleClient";
 import { AxiosHTTPClient } from "../../../utils/http/classes/AxiosHTTPClient";
 import { UserType } from "../models/User";
 import { IAuctionResponse } from "../models/Auction";
@@ -11,10 +12,6 @@ const BASE_COS_CLIENT_URL: string = process.env.BASE_COS_CLIENT_URL || "";
 const USERMAIL: string = process.env.USERMAIL || "";
 const PASSWORD: string = process.env.PASSWORD || "";
 const TOKEN: string = "AUTHENTICATED_TOKEN";
-
-const axiosConfig: AxiosRequestConfig = {
-    baseURL: BASE_COS_CLIENT_URL
-}
 
 describe("Test CarOnSaleClient - PUT Authenticate", () => {
 
@@ -32,7 +29,7 @@ describe("Test CarOnSaleClient - PUT Authenticate", () => {
                 type: UserType.BUYER
             });
 
-        const response = await new CarOnSaleClient(new AxiosHTTPClient(axiosConfig)).authenticate(USERMAIL, authenticationReq);
+        const response = await new CarOnSaleClient(new AxiosHTTPClient(BASE_COS_CLIENT_URL)).authenticate(USERMAIL, authenticationReq);
         expect(response.authenticated).to.be.true;
         expect(response.token).to.be.not.empty;
     });
@@ -48,7 +45,7 @@ describe("Test CarOnSaleClient - PUT Authenticate", () => {
             .reply(401, { status: 401 });
 
         try {
-            const response = await new CarOnSaleClient(new AxiosHTTPClient(axiosConfig)).authenticate(USERMAIL, authenticationReq);
+            const response = await new CarOnSaleClient(new AxiosHTTPClient(BASE_COS_CLIENT_URL)).authenticate(USERMAIL, authenticationReq);
             expect(response.authenticated).to.be.false;
         } catch (error: any) {
             expect(error.status).to.be.equals(401);
@@ -58,9 +55,9 @@ describe("Test CarOnSaleClient - PUT Authenticate", () => {
 
 });
 
-describe("Test CarOnSaleClient - GET Running Auctions fom Buyer", () => {
+describe("Test CarOnSaleClient - GET Running Auctions from Buyer", () => {
 
-    it("list all running auctions", async () => {
+    it("list all running auctions from logged Buyer", async () => {
         const reqHeaders = {
             "authtoken": TOKEN,
             "userid": USERMAIL
@@ -78,7 +75,7 @@ describe("Test CarOnSaleClient - GET Running Auctions fom Buyer", () => {
             .matchHeader("userid", USERMAIL)
             .reply(200, auctionsResponse);
 
-        const auctions: IAuctionResponse = await new CarOnSaleClient(new AxiosHTTPClient(axiosConfig)).getRunningAuctions({ headers: reqHeaders });
+        const auctions: IAuctionResponse = await new CarOnSaleClient(new AxiosHTTPClient(BASE_COS_CLIENT_URL)).getRunningAuctions({ headers: reqHeaders });
         expect(auctions.items).to.be.empty;
         expect(auctions.total).to.be.equals(0);
     });

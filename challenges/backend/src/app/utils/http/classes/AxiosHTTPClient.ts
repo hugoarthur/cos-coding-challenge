@@ -1,12 +1,14 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
+import { injectable } from "inversify";
 import { IHTTPClient } from "../interface/IHTTPClient";
 import { IHTTPRequest } from "../models/http";
 
+@injectable()
 export class AxiosHTTPClient implements IHTTPClient {
     private axiosInstance: AxiosInstance;
 
-    constructor(config?: AxiosRequestConfig) {
-        this.axiosInstance = axios.create(config);
+    constructor(private baseURL?: string) {
+        this.axiosInstance = axios.create({ baseURL: this.baseURL });
     }
 
     get<T>(url: string, request?: IHTTPRequest): Promise<T> {
