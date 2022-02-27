@@ -8,9 +8,12 @@ export class Logger implements ILogger {
     public constructor() {
     }
 
-
     public log(message: string): void {
         console.log(`[LOG]: ${message}`);
+    }
+
+    public error(message: string, error: Error): void {
+        console.error(message, error);
     }
 
 }

@@ -23,9 +23,11 @@ export class AuctionMonitorApp {
         try {
             const authenticatedUser = await this.client.authenticate(process.env.USERMAIL || "", { password: process.env.PASSWORD || "" });
             const auctions = await this.client.getRunningAuctions({ headers: { "userid": authenticatedUser.userId, "authtoken": authenticatedUser.token } });
-            console.log(auctions);
+            this.logger.log(auctions?.total?.toString());
+            process.exit(0);
         } catch (error: any) {
-            console.error(error.data);
+            this.logger.error(error?.data?.message, error?.data);
+            process.exit(1);
         }
     }
 
