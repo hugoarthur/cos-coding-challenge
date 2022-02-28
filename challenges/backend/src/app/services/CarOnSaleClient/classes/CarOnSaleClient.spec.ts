@@ -4,9 +4,9 @@ import "reflect-metadata";
 
 import { CarOnSaleClient } from "./CarOnSaleClient";
 import { AxiosHTTPClient } from "../../../utils/http/classes/AxiosHTTPClient";
-import { UserType } from "../models/User";
-import { IAuctionResponse } from "../models/Auction";
-import { IAuthenticationRequest } from "../models/Authentication";
+import { UserType } from "../domains/User";
+import { IAuctionResponse } from "../domains/Auction";
+import { IAuthenticationRequest } from "../domains/Authentication";
 import { Logger } from "../../Logger/classes/Logger";
 
 const BASE_COS_CLIENT_URL: string = process.env.BASE_COS_CLIENT_URL || "";

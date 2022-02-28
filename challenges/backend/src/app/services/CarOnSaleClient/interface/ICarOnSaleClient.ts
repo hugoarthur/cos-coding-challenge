@@ -1,6 +1,6 @@
-import { IAuctionResponse } from "../models/Auction";
-import { IAuthenticationRequest, IAuthenticationResult } from "../models/Authentication";
-import { IHTTPRequest } from "../../../utils/http/models/http";
+import { IAuctionResponse } from "../domains/Auction";
+import { IAuthenticationRequest, IAuthenticationResult } from "../domains/Authentication";
+import { IHTTPRequest } from "../../../utils/http/domains/HTTPRequest";
 
 /**
  * This service describes an interface to access auction data from the CarOnSale API.

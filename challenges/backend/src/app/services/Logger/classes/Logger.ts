@@ -2,7 +2,7 @@ import {ILogger} from "../interface/ILogger";
 import {injectable} from "inversify";
 import "reflect-metadata";
 
-const CONSOLE_DEBUG: boolean = Boolean(process.env.CONSOLE_DEBUG) || false;
+const DEBUG_CONSOLE: boolean = (process.env.DEBUG_CONSOLE === 'true') || false;
 @injectable()
 export class Logger implements ILogger {
 
@@ -13,10 +13,18 @@ export class Logger implements ILogger {
         console.log(`[LOG]: ${message}`);
     }
 
+    public info(message: string): void {
+        console.info(`[INFO]: ${message}`);
+    }
+
     public debug(message: string, params?: any): void {
-        if (CONSOLE_DEBUG) {
+        if (DEBUG_CONSOLE) {
             params ? console.debug(`[DEBUG]: ${message}`, params) : console.debug(`[DEBUG]: ${message}`);
         }
+    }
+
+    public warn(message: string): void {
+        console.warn(`[WARN] ${message}`);
     }
 
     public error(message: string, error: Error): void {

@@ -1,4 +1,4 @@
-import { IHTTPRequest } from "../models/http";
+import { IHTTPRequest } from "../domains/HTTPRequest";
 
 export interface IHTTPClient {
     get<T>(url: string, request?: IHTTPRequest): Promise<T>;

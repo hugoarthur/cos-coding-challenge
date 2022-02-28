@@ -1,7 +1,7 @@
-import { IAuctionResponse } from "../models/Auction";
-import { IAuthenticationRequest, IAuthenticationResult } from "../models/Authentication";
+import { IAuctionResponse } from "../domains/Auction";
+import { IAuthenticationRequest, IAuthenticationResult } from "../domains/Authentication";
 import { IHTTPClient } from "../../../utils/http/interface/IHTTPClient";
-import { IHTTPRequest } from "../../../utils/http/models/http";
+import { IHTTPRequest } from "../../../utils/http/domains/HTTPRequest";
 import { ICarOnSaleClient } from "../interface/ICarOnSaleClient";
 import { inject, injectable } from "inversify";
 import { DependencyIdentifier } from "../../../DependencyIdentifiers";

@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import { injectable } from "inversify";
 import { IHTTPClient } from "../interface/IHTTPClient";
-import { IHTTPRequest } from "../models/http";
+import { IHTTPRequest } from "../domains/HTTPRequest";
 
 @injectable()
 export class AxiosHTTPClient implements IHTTPClient {
