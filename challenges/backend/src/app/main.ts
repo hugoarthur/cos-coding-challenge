@@ -1,10 +1,10 @@
 import {Container} from "inversify";
-import {ILogger} from "./services/Logger/interface/ILogger";
-import {Logger} from "./services/Logger/classes/Logger";
+import {ILogger} from "./utils/Logger/interface/ILogger";
+import {Logger} from "./utils/Logger/classes/Logger";
 import {DependencyIdentifier} from "./DependencyIdentifiers";
 import {AuctionMonitorApp} from "./AuctionMonitorApp";
-import { IHTTPClient } from "./utils/http/interface/IHTTPClient";
-import { AxiosHTTPClient } from "./utils/http/classes/AxiosHTTPClient";
+import { IHTTPClient } from "./utils/HTTP/interface/IHTTPClient";
+import { AxiosHTTPClient } from "./utils/HTTP/classes/AxiosHTTPClient";
 import { ICarOnSaleClient } from "./services/CarOnSaleClient/interface/ICarOnSaleClient";
 import { CarOnSaleClient } from "./services/CarOnSaleClient/classes/CarOnSaleClient";
 

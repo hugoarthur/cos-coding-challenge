@@ -3,11 +3,11 @@ import nock from "nock";
 import "reflect-metadata";
 
 import { CarOnSaleClient } from "./CarOnSaleClient";
-import { AxiosHTTPClient } from "../../../utils/http/classes/AxiosHTTPClient";
+import { AxiosHTTPClient } from "../../../utils/HTTP/classes/AxiosHTTPClient";
 import { UserType } from "../domains/User";
 import { IAuctionResponse } from "../domains/Auction";
 import { IAuthenticationRequest } from "../domains/Authentication";
-import { Logger } from "../../Logger/classes/Logger";
+import { Logger } from "../../../utils/Logger/classes/Logger";
 
 const BASE_COS_CLIENT_URL: string = process.env.BASE_COS_CLIENT_URL || "";
 const USERMAIL: string = process.env.USERMAIL || "";

@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import { ILogger } from "./services/Logger/interface/ILogger";
+import { ILogger } from "./utils/Logger/interface/ILogger";
 import { DependencyIdentifier } from "./DependencyIdentifiers";
 import { ICarOnSaleClient } from "./services/CarOnSaleClient/interface/ICarOnSaleClient";
 import { IAuctionResponse } from "./services/CarOnSaleClient/domains/Auction";

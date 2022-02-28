@@ -1,11 +1,11 @@
 import { IAuctionResponse } from "../domains/Auction";
 import { IAuthenticationRequest, IAuthenticationResult } from "../domains/Authentication";
-import { IHTTPClient } from "../../../utils/http/interface/IHTTPClient";
-import { IHTTPRequest } from "../../../utils/http/domains/HTTPRequest";
+import { IHTTPClient } from "../../../utils/HTTP/interface/IHTTPClient";
+import { IHTTPRequest } from "../../../utils/HTTP/domains/HTTPRequest";
 import { ICarOnSaleClient } from "../interface/ICarOnSaleClient";
 import { inject, injectable } from "inversify";
 import { DependencyIdentifier } from "../../../DependencyIdentifiers";
-import { ILogger } from "../../Logger/interface/ILogger";
+import { ILogger } from "../../../utils/Logger/interface/ILogger";
 
 @injectable()
 export class CarOnSaleClient implements ICarOnSaleClient {
